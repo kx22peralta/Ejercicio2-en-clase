@@ -27,36 +27,41 @@ def test_relu(a):
 
 
 @pytest.mark.task0_2
-def test_symmetric():
+@given(small_floats, small_floats)
+def test_symmetric(a, b):
     """
     Write a test that ensures that :func:`minitorch.operators.mul` is symmetric, i.e.
     gives the same value regardless of the order of its input.
     """
-    None
+    # None
     # TODO: Implement for Task 0.2.
-    raise NotImplementedError('Need to implement for Task 0.2')
-
+    # raise NotImplementedError("Need to implement for Task 0.2")
+    assert operators.mul(a, b) == operators.mul(b, a)
+    assert operators.add(a, b) == operators.add(b, a)
 
 @pytest.mark.task0_2
-def test_distribute():
+@given(small_floats, small_floats, small_floats)
+def test_distribute(a, b, c):
     r"""
     Write a test that ensures that your operators distribute, i.e.
     :math:`z \times (x + y) = z \times x + z \times y`
     """
-    None
+    # None
     # TODO: Implement for Task 0.2.
-    raise NotImplementedError('Need to implement for Task 0.2')
-
+    # raise NotImplementedError("Need to implement for Task 0.2")
+    assert_close(operators.mul(a, b + c), operators.mul(a, b) + operators.mul(a, c))
 
 @pytest.mark.task0_2
-def test_other():
+@given(small_floats)
+def test_other(a):
     """
     Write a test that ensures some other property holds for your functions.
     """
-    None
+    # None
     # TODO: Implement for Task 0.2.
-    raise NotImplementedError('Need to implement for Task 0.2')
-
+    # raise NotImplementedError("Need to implement for Task 0.2")
+    assert a == operators.neg(operators.neg(a))
+    assert_close(operators.sigmoid(-a), 1 - operators.sigmoid(a))
 
 # HIGHER ORDER
 
@@ -78,8 +83,11 @@ def test_property(ls1, ls2):
     is the same as the sum of each element of `ls1` plus each element of `ls2`.
     """
     # TODO: Implement for Task 0.3.
-    raise NotImplementedError('Need to implement for Task 0.3')
-
+    # raise NotImplementedError("Need to implement for Task 0.3")
+    assert_close(
+        operators.sum(ls1) + operators.sum(ls2),
+        operators.sum(operators.addLists(ls1, ls2)),
+    )
 
 @pytest.mark.task0_3
 @given(lists(small_floats))

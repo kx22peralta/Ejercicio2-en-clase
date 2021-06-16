@@ -11,3 +11,6 @@
 ```
 python run_tests.py
 ```
+![](project/grafico1.png)
+![](project/grafico2.png)
+![](project/grafico3.png)
