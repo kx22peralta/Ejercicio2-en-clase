@@ -12,7 +12,9 @@
 python run_tests.py
 ```
 Tarea 05
-Resultado de la clasificación
+
+Resultado de la clasificación 
+
 ![](project/grafico1.png)
 ![](project/grafico2.png)
 ![](project/grafico3.png)
